@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     EditText editText;
     Button b;
+    Button berechnen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         b = findViewById(R.id.button2);
+        berechnen = findViewById(R.id.button);
 
         textView = findViewById(R.id.textView);
         textView.setText("Answer from Server");
