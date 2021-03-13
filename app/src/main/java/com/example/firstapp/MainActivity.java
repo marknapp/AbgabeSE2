@@ -33,14 +33,38 @@ public class MainActivity extends AppCompatActivity {
                 String matNr = editText.getText().toString();
                 Connection t = new Connection(matNr);
                 t.start();
-                try{
+                try {
                     t.join();
-                }catch(InterruptedException ie){
+                } catch (InterruptedException ie) {
 
                 }
                 textView.setText(t.getAnswer());
             }
         });
-
     }
+        public void berechnen(String matNr) {
+            int firstSum = 0;
+            int secondSum = 0;
+            int[] numbers = new int[matNr.length()];
+            char[] c = matNr.toCharArray();
+
+            for (int i = 0; i < matNr.length(); i++) {
+                numbers[i] = (int) c[i]-48;
+            }
+            for (int i = 0; i < numbers.length; i++) {
+                if (i % 2 == 0) {
+                    firstSum += numbers[i];
+                } else {
+                    secondSum += numbers[i];
+                }
+            }
+            int alternierendeQuersumme = firstSum-secondSum;
+            if(alternierendeQuersumme%2==0){
+                textView.setText("GERADE");
+            }
+            else{
+                textView.setText("UNGERADE");
+            }
+
+        }
 }
