@@ -28,7 +28,15 @@ public class MainActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String matNr = editText.getText().toString();
+                Connection t = new Connection(matNr);
+                t.start();
+                try{
+                    t.join();
+                }catch(InterruptedException ie){
 
+                }
+                textView.setText(t.getAnswer());
             }
         });
 
