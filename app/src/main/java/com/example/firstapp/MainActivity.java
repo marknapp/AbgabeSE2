@@ -41,6 +41,26 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(t.getAnswer());
             }
         });
+
+        berechnen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String matNr = editText.getText().toString();
+                Connection t = new Connection(matNr);
+                t.start();
+                try {
+                    t.join();
+                } catch (InterruptedException ie) {
+
+                }
+                if (!t.getAnswer().equals("Dies ist keine gueltige Matrikelnummer")) {
+                    berechnen(matNr);
+                } else {
+                    textView.setText("Das ist keine Matrikelnummer");
+
+                }
+            }
+        });
     }
         public void berechnen(String matNr) {
             int firstSum = 0;
